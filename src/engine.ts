@@ -157,14 +157,15 @@ export class MLCEngine implements MLCEngineInterface {
     };
 
     const modelRecord = findModelRecord();
-    const baseUrl =
+    const modelUrl = modelRecord.model;
+    /*const baseUrl =
       typeof document !== "undefined"
         ? document.URL
         : globalThis.location.origin;
     let modelUrl = cleanModelUrl(modelRecord.model);
     if (!modelUrl.startsWith("http")) {
       modelUrl = new URL(modelUrl, baseUrl).href;
-    }
+    }*/
 
     let configCache: tvmjs.ArtifactCacheTemplate;
     if (this.appConfig.useIndexedDBCache) {
@@ -200,7 +201,7 @@ export class MLCEngine implements MLCEngineInterface {
       } else if (!wasmUrl.startsWith("http")) {
         // do not cache wasm on the same server as it can also refresh
         // rely on the normal caching strategy
-        return (await fetch(new URL(wasmUrl, baseUrl).href)).arrayBuffer();
+        return (await fetch(wasmUrl)).arrayBuffer();
       } else {
         // use cache
         return await wasmCache.fetchWithCache(wasmUrl, "arraybuffer");

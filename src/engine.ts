@@ -157,15 +157,15 @@ export class MLCEngine implements MLCEngineInterface {
     };
 
     const modelRecord = findModelRecord();
-    const modelUrl = modelRecord.model;
-    /*const baseUrl =
+
+    const baseUrl =
       typeof document !== "undefined"
         ? document.URL
         : globalThis.location.origin;
     let modelUrl = cleanModelUrl(modelRecord.model);
     if (!modelUrl.startsWith("http")) {
       modelUrl = new URL(modelUrl, baseUrl).href;
-    }*/
+    }
 
     let configCache: tvmjs.ArtifactCacheTemplate;
     if (this.appConfig.useIndexedDBCache) {

@@ -76,7 +76,7 @@ export function getTokenTableFromTokenizer(tokenizer: Tokenizer): string[] {
 export function cleanModelUrl(modelUrl: string): string {
   // https://huggingface.co/USER/MODEL -> https://huggingface.co/USER/MODEL/
   modelUrl += modelUrl.endsWith("/") ? "" : "/";
-  if (!modelUrl.match(/.+\/resolve\/.+\//)) modelUrl += "resolve/main/";
+  //if (!modelUrl.match(/.+\/resolve\/.+\//)) modelUrl += "resolve/main/";
   // https://huggingface.co/USER/MODEL/ -> https://huggingface.co/USER/MODEL/resolve/main/
   return new URL(modelUrl).href;
 }
